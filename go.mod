@@ -1,0 +1,3 @@
+module weatherserver
+
+go 1.21.0
