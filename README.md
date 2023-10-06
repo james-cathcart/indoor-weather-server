@@ -27,7 +27,7 @@ TBD...
 ## Deployment
 ![](docs/deployment.png)
 
-## Logic
+## Logic & Workflow
 ### Node/Server Flow
 ![](docs/server-flow.png)
 
