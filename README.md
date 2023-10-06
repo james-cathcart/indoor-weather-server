@@ -18,7 +18,20 @@ make && bin/weather-server
 ```
 
 ## Run as Service
-TBD...
+Add the following to `/lib/systemd/system/weather-server.service` updating the path to the server binary for the `ExecStart` value.
+```
+[Unit]
+Description=Weather Server for Indoor Weather application
+
+[Service]
+Type=simple
+ExecStart=/path/to/weather-server
+
+[Install]
+WantedBy=multi-user.target
+```
+Start the service and enable start-on-boot
+
 
 # Development
 ## Architecture

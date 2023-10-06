@@ -30,5 +30,11 @@ func main() {
 	}
 
 	log.Println(`starting server...`)
-	server.ListenAndServe()
+
+	err := server.ListenAndServe()
+	if err != nil {
+		log.Println(err)
+	}
+
+	log.Println(`application exiting`)
 }
