@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+skinparam {
+    backgroundColor #888
+    classBackgroundColor #Orange
+}
+
+interface common.Client #LightBlue {
+    +Do(req *http.Request): (*http.Response, error)
+}
+
+interface weather.WeatherService #LightBlue {
+    +Save(model.WeatherRecord): error
+}
+
+class weather.ElasticImpl {
+    ~common.Client
+    +Save(model.WeatherRecord): error
+}
+
+WeatherService <-- ElasticImpl
+
+
+@enduml

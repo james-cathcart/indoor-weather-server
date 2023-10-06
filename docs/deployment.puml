@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/deployment-diagram
+
+skinparam {
+    backgroundColor #888
+    handwritten false
+}
+actor User #Purple
+control Firewall #Yellow
+control Proxy #Yellow
+rectangle Kubernetes {
+    component WeatherServer #Orange
+}
+node WeatherNode #LightBlue
+database Elasticsearch #LimeGreen
+rectangle Kibana #Pink
+
+User <--> Proxy
+Proxy <--> Firewall
+Firewall <--> Kibana
+WeatherNode --> WeatherServer
+WeatherServer --> Elasticsearch
+Elasticsearch <--> Kibana
+
+@enduml
