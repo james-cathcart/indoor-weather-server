@@ -6,27 +6,20 @@ skinparam {
     classBackgroundColor #Orange
 }
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
-
-List <|-- AbstractList
-Collection <|-- AbstractCollection
-
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+interface common.Client #LightBlue {
+    +Do(req *http.Request): (*http.Response, error)
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+interface weather.WeatherService #LightBlue {
+    +Save(model.WeatherRecord): error
 }
+
+class weather.ElasticImpl {
+    ~common.Client
+    +Save(model.WeatherRecord): error
+}
+
+WeatherService <-- ElasticImpl
+
 
 @enduml

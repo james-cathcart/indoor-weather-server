@@ -1,0 +1,15 @@
+@startuml
+'https://plantuml.com/activity-diagram-beta
+
+skinparam {
+    backgroundColor #888
+}
+
+start
+    #LightBlue: User logs into Kibana;
+    #LightBlue: User views dashboard;
+    #LightBlue: Kibana calls Elasticsearch for data;
+    #LightBlue: Kibana displays data via dashboard;
+stop
+
+@enduml

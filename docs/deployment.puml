@@ -13,11 +13,13 @@ rectangle Kubernetes {
 }
 node WeatherNode #LightBlue
 database Elasticsearch #LimeGreen
+rectangle Kibana #Pink
 
-User -- Proxy
-Proxy -- Firewall
-Firewall -- WeatherServer
-WeatherServer <-- WeatherNode
-WeatherServer <--> Elasticsearch
+User <--> Proxy
+Proxy <--> Firewall
+Firewall <--> Kibana
+WeatherNode --> WeatherServer
+WeatherServer --> Elasticsearch
+Elasticsearch <--> Kibana
 
 @enduml
