@@ -9,7 +9,7 @@ This is a simple application designed to collect weather data from _n_ number of
 
 ## Configuration
 You will need to following environment variables:
-- **ELASTIC_HOST** - full hostname/port for the Elasticsearch host (ex: `http://elastic:9200`)
+- **_ELASTIC_HOST_** - full hostname/port for the Elasticsearch host (ex: `http://elastic:9200`)
 ## Installation
 Just clone the repository
 ## Run via CLI
