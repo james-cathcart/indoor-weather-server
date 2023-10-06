@@ -12,3 +12,9 @@ tbd
 ## Run as Service
 tbd
 
+# Development
+## Architecture
+![](docs/classes.png)
+
+## Deployment
+![](docs/deployment.png)
