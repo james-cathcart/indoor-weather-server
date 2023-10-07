@@ -25,13 +25,13 @@ Description=Weather Server for Indoor Weather application
 
 [Service]
 Type=simple
+Environment="ELASTIC_HOST=http://ELASTIC_HOST:ELASTIC_PORT"
 ExecStart=/path/to/weather-server
 
 [Install]
 WantedBy=multi-user.target
 ```
 Start the service and enable start-on-boot
-
 
 # Development
 ## Architecture
@@ -46,3 +46,36 @@ Start the service and enable start-on-boot
 
 ### User Flow
 ![](docs/user-flow.png)
+
+## Example Elasticsearch Response
+```
+        ...
+        "hits": [
+            {
+                "_index": "test-indoor-weather",
+                "_type": "_doc",
+                "_id": "tvP2jooBkamCBFXjrHTK",
+                "_score": 1.0,
+                "_source": {
+                    "time": 1694615645,
+                    "humidity": 45,
+                    "temperature": 24.984375,
+                    "pressure": 1012.997802734375,
+                    "location": "office"
+                }
+            },
+            {
+                "_index": "test-indoor-weather",
+                "_type": "_doc",
+                "_id": "t_P2jooBkamCBFXjtHSv",
+                "_score": 1.0,
+                "_source": {
+                    "time": 1694615647,
+                    "humidity": 45,
+                    "temperature": 24.984375,
+                    "pressure": 1013.00634765625,
+                    "location": "office"
+                }
+            },
+            ...
+```
