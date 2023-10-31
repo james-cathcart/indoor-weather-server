@@ -1,14 +1,10 @@
 @startuml
 'https://plantuml.com/activity-diagram-beta
 
-skinparam {
-    backgroundColor #888
-}
-
 start
-#LightBlue: Node gets weather data;
-#LightBlue: Node sends data to server;
-#LightBlue: Server sends data to Elasticsearch;
+:Node gets weather data;
+:Node sends data to server;
+:Server sends data to Elasticsearch;
 stop
 
 @enduml
