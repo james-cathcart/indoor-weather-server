@@ -45,6 +45,12 @@ func (svc *ElasticImpl) Save(data model.WeatherRecord) error {
 		log.Printf("error: %v", err)
 		return err
 	}
+	defer func(closeFunc func() error) {
+		err = closeFunc()
+		if err != nil {
+			log.Printf("error: %v", err)
+		}
+	}(req.Body.Close)
 
 	req.Header.Set(`Content-Type`, `application/json`)
 

@@ -13,7 +13,7 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 	}
 
 	data := struct {
-		Message string `json:message`
+		Message string `json:"message"`
 	}{
 		Message: `weather server is up`,
 	}

@@ -26,7 +26,6 @@ func (api *API) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	default:
 		http.Error(w, `method not allowed`, http.StatusMethodNotAllowed)
 	}
-
 }
 
 func (api *API) handlePost(w http.ResponseWriter, r *http.Request) {
@@ -61,5 +60,8 @@ func (api *API) handlePost(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusCreated)
-	w.Write(nil)
+	written, err := w.Write(nil)
+	if err != nil {
+		log.Printf("error: %v, wrote: %d", err, written)
+	}
 }
