@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfiMap
+metadata:
+  name: weather-config-prd
+  namespace: weather-prd
+data:
+  weather-env: prd
+  log-level: error

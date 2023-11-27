@@ -1,0 +1,26 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weather-server
+  namespace: weather-prd
+spec:
+  selector:
+    matchLabels:
+      app: weather-server
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: weather-server
+    spec:
+      containers:
+      - name: weather-server
+        image: <will be replace>
+        env: tbd
+        resources: tbd
+        ports:
+          - containerPort: 8080
+            name: http
+            protocol: tcp
+        imagePullPolicy: Always

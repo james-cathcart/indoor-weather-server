@@ -1,0 +1,9 @@
+---
+apiVersion: v1
+kind: ConfiMap
+metadata:
+  name: weather-config-dev
+  namespace: weather-dev
+data:
+  weather-env: dev
+  log-level: info

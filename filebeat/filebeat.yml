@@ -1,0 +1,27 @@
+---
+filebeat.inputs:
+  - type: filestream
+    paths: ./log.json
+    parsers:
+      - ndjson:
+        overwrite_keys: true
+        add_error_key: true
+        expand_keys: true
+    processors:
+      - add_host_metadata: ~
+      - add_cloud_metadata: ~
+      - add_docker_metadata: ~
+      - add_kubernetes_metadata: ~
+
+setup:
+  ilm:
+    enabled: false
+  kibana:
+    host: "192.0.1.16:5601"
+  template:
+    name: "weather-server"
+    pattern: "weather-server"
+
+output.elasticsearch:
+  hosts: ["192.0.1.15:9200"]
+  index: "weather-server"
