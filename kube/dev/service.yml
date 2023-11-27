@@ -3,7 +3,7 @@ apiVersion:
 kind: Service
 metadata:
   name: weather-service
-  namespace: weather-prd
+  namespace: weather-dev
 spec:
   type: NodePort
   selector:
