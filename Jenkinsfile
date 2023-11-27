@@ -33,8 +33,12 @@ node('workers') {
             env.GIT_COMMIT = scmInfo.GIT_COMMIT
         }
 
+        def imageTest = docker.build("${env.IMAGE_NAME}-test", "-f test.Dockerfile .")
+
         stage('Compile & Unit Test') {
-            sh 'go build -o bin/weather-server cmd/api/main.go'
+            imageTest.inside{
+                sh 'make'
+            }
         }
 
         stage('Build') {
