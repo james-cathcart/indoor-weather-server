@@ -62,6 +62,7 @@ func (api *API) handlePost(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(http.StatusCreated)
 	written, err := w.Write(nil)
 	if err != nil {
-		log.Printf("error: %v, wrote: %d", err, written)
+		log.Printf("error: %d bytes written, message: `%v`", err, written)
+		return
 	}
 }

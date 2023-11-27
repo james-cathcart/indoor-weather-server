@@ -20,7 +20,7 @@ type ElasticImpl struct {
 	client common.Client
 }
 
-func NewService(client common.Client, elasticHost string) WeatherService {
+func NewElasticService(client common.Client, elasticHost string) WeatherService {
 	return &ElasticImpl{
 		client: client,
 		host:   elasticHost,
@@ -29,17 +29,15 @@ func NewService(client common.Client, elasticHost string) WeatherService {
 
 func (svc *ElasticImpl) Save(data model.WeatherRecord) error {
 
-	url := fmt.Sprintf("%s/%s/_doc", svc.host, weatherIndex)
 	jsonBytes, err := json.Marshal(data)
 	if err != nil {
 		log.Printf("error: %v", err)
 		return err
 	}
-
 	body := io.NopCloser(bytes.NewReader(jsonBytes))
 
+	url := fmt.Sprintf("%s/%s/_doc", svc.host, weatherIndex)
 	log.Printf("calling: %s", url)
-
 	req, err := http.NewRequest(http.MethodPost, url, body)
 	if err != nil {
 		log.Printf("error: %v", err)

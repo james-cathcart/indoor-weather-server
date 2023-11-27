@@ -2,6 +2,7 @@ package system
 
 import (
 	"encoding/json"
+	"fmt"
 	"net/http"
 )
 
@@ -25,5 +26,10 @@ func HealthCheck(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.Header().Set(`Content-Type`, `application/json`)
-	w.Write(jsonBytes)
+	byteCount, err := w.Write(jsonBytes)
+	if err != nil {
+		msg := fmt.Sprintf("error: %d bytes written, message: `%s`", err.Error(), byteCount)
+		http.Error(w, msg, http.StatusInternalServerError)
+		return
+	}
 }
