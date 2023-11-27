@@ -34,7 +34,7 @@ node('workers') {
         }
 
         stage('Compile & Unit Test') {
-            sh 'make'
+            sh 'go build -o bin/weather-server cmd/api/main.go'
         }
 
         stage('Build') {
