@@ -6,4 +6,5 @@ metadata:
   namespace: weather-dev
 data:
   weather-env: dev
-  log-level: info
+  log-level: debug
+  elastic-host: "http://192.0.1.15:9200"

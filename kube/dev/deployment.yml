@@ -17,7 +17,11 @@ spec:
       containers:
       - name: weather-server
         image:
-        env: tbd
+        env:
+        - name: ELASTIC_HOST
+          valueFrom:
+            configMapKeyRef:
+              name: elastichost
         resources: tbd
         ports:
         - containerPort: 8080
