@@ -21,8 +21,25 @@ spec:
         - name: ELASTIC_HOST
           valueFrom:
             configMapKeyRef:
-              name: elastichost
-        resources: tbd
+              name: weather-config-dev
+              key: elastic-host
+        - name: WEATHER_ENV
+          valueFrom:
+            configMapKeyRef:
+              name: weather-config-dev
+              key: weather-env
+        - name: LOG_LEVEL
+          valueFrom:
+            configMapKeyRef:
+              name: weather-config-dev
+              key: weather-env
+        resources:
+          requests:
+            cpu: 50m
+            memory: 64Mi
+          limits:
+            cpu: 50m
+            memory: 64Mi
         ports:
         - containerPort: 8080
           name: http

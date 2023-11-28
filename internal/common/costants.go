@@ -1,7 +1,7 @@
 package common
 
 const (
-	WeatherEnv  string = `WEATHER_PORT`
+	WeatherEnv  string = `WEATHER_ENV`
 	LogLevel    string = `LOG_LEVEL`
 	LogInfo     string = `info`
 	LogWarn     string = `warn`
