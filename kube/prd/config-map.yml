@@ -6,4 +6,5 @@ metadata:
   namespace: weather-prd
 data:
   weather-env: prd
-  log-level: error
+  log-level: info
+  elastic-host: "http://192.0.1.15:9200"

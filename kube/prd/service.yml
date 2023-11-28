@@ -9,6 +9,6 @@ spec:
   selector:
     app: weather-server
   ports:
-    - nodePort: 30123
+    - nodePort: 30121
       port: 8080
       targetPort: 8080

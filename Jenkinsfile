@@ -43,7 +43,7 @@ node('workers') {
 
         stage('Build') {
 
-            if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'uat' || env.BRANCH_NAME == 'master') {
+            if (env.BRANCH_NAME == 'master') {
                 docker.build(env.IMAGE_NAME, "-f Dockerfile .")
             } else {
                 sh 'echo "skipping container image build for feature branch"'
@@ -53,7 +53,7 @@ node('workers') {
         stage('Push') {
             docker.withRegistry(env.REGISTRY_URL, 'Docker Hub RegCreds') {
 
-                if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'uat' || env.BRANCH_NAME == 'master') {
+                if (env.BRANCH_NAME == 'master') {
                     env.IMAGE_TAG = "${env.BUILD_NUMBER}-${env.GIT_COMMIT}-${weatherEnv}"
                     docker.image(env.IMAGE_NAME).push(env.IMAGE_TAG)
                 } else {
@@ -63,7 +63,7 @@ node('workers') {
         }
 
         stage('Deploy') {
-            if (env.BRANCH_NAME == 'dev' || env.BRANCH_NAME == 'uat' || env.BRANCH_NAME == 'master') {
+            if (env.BRANCH_NAME == 'master') {
                 sh "sed -i 's#image:#image: ${env.IMAGE_NAME}:${env.IMAGE_TAG}#' kube/${weatherEnv}/deployment.yml"
                 sh "kubectl apply -f kube/${weatherEnv}"
             } else {
