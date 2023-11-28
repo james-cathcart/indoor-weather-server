@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: weather-server
-        image: <will be replace>
+        image:
         env: tbd
         resources: tbd
         ports:
