@@ -20,7 +20,9 @@ spec:
         env: tbd
         resources: tbd
         ports:
-          - containerPort: 8080
-            name: http
-            protocol: tcp
+        - containerPort: 8080
+          name: http
+          protocol: tcp
         imagePullPolicy: Always
+      imagePullSecrets:
+      - name: docker-hub-pull-secret
