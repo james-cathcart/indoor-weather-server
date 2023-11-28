@@ -12,7 +12,7 @@ node('workers') {
         weatherEnv = 'uat'
         logLevel = 'warn'
         break
-    case 'main':
+    case 'master':
         weatherEnv = 'prd'
         logLevel = 'error'
         break
