@@ -1,0 +1,15 @@
+---
+version: '3.8'
+services:
+  weather-server:
+    container_name: weather-server
+    image: weather-server
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    environment:
+      - ELASTIC_HOST="http://192.0.1.15:9200"
+      - WEATHER_ENV="dev"
+      - LOG_LEVEL="info"
+    ports:
+      - "8080:8080"

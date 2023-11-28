@@ -28,7 +28,7 @@ RUN service filebeat start
 RUN apt-get install ca-certificates -y
 COPY --from=builder /bin/weather-server .
 COPY --chmod=644 filebeat/filebeat.yml /etc/filebeat/filebeat.yml
-COPY startup.sh .
+COPY --chmod=777 startup.sh .
 
 
 EXPOSE 8080
