@@ -23,6 +23,11 @@ spec:
                 configMapKeyRef:
                   name: weather-config-prd
                   key: elastic-host
+            - name: ELASTIC_INDEX
+              valueFrom:
+                configMapKeyRef:
+                  name: weather-config-prd
+                  key: elastic-index
             - name: WEATHER_ENV
               valueFrom:
                 configMapKeyRef:
