@@ -7,6 +7,6 @@ const (
 	LogWarn      string = `warn`
 	LogError     string = `error`
 	ElasticHost  string = `ELASTIC_HOST`
-	ElasticIndex string = `WEATHER_INDEX`
+	ElasticIndex string = `ELASTIC_INDEX`
 	WeatherPort  string = `WEATHER_PORT`
 )
