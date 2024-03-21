@@ -11,8 +11,8 @@ import (
 	"weatherserver/internal/model"
 )
 
-const (
-	weatherIndex = `test-indoor-weather`
+var (
+	ElasticIndex string
 )
 
 type ElasticImpl struct {
@@ -38,7 +38,7 @@ func (svc *ElasticImpl) Save(data model.WeatherRecord) error {
 	}
 	body := io.NopCloser(bytes.NewReader(jsonBytes))
 
-	url := fmt.Sprintf("%s/%s/_doc", svc.host, weatherIndex)
+	url := fmt.Sprintf("%s/%s/_doc", svc.host, ElasticIndex)
 	svc.log.Info(fmt.Sprintf("calling: %s", url))
 	req, err := http.NewRequest(http.MethodPost, url, body)
 	if err != nil {

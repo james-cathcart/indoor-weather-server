@@ -37,13 +37,18 @@ func init() {
 	// determine deployment environment
 	Environment = os.Getenv(common.WeatherEnv)
 	if Environment == `` {
-		stdlog.Fatalf("error: could not determine deployment environment")
+		stdlog.Fatal("error: could not determine deployment environment")
 	}
 
 	LogLevel = os.Getenv(common.LogLevel)
 	if LogLevel == `` {
 		stdlog.Println("warning: could not determine log level from environment, applying default `error` level")
 		LogLevel = common.LogError
+	}
+
+	weather.ElasticIndex = os.Getenv(common.ElasticIndex)
+	if weather.ElasticIndex == `` {
+		stdlog.Fatal(`no elastic index found!`)
 	}
 }
 
