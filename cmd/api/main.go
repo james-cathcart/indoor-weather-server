@@ -146,5 +146,5 @@ func main() {
 		stdlog.Printf("%s: error: %v", Environment, err)
 	}
 
-	stdlog.Println(`application exiting`)
+	stdlog.Println(`application exiting...`)
 }
